@@ -24,3 +24,33 @@ def initialize() -> None:
                 created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
             )
         """)
+        db.execute("""
+            CREATE TABLE IF NOT EXISTS chat_messages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                role TEXT NOT NULL CHECK(role IN ('user', 'assistant')),
+                content TEXT NOT NULL,
+                provider TEXT NOT NULL DEFAULT '',
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+
+
+def save_message(role: str, content: str, provider: str = "") -> None:
+    if role not in {"user", "assistant"}:
+        raise ValueError("Unsupported message role")
+    with connect() as db:
+        db.execute(
+            "INSERT INTO chat_messages (role, content, provider) VALUES (?, ?, ?)",
+            (role, content, provider),
+        )
+
+
+def recent_messages(limit: int = 40) -> list[dict]:
+    limit = max(1, min(int(limit), 100))
+    with connect() as db:
+        rows = db.execute(
+            "SELECT id, role, content, provider, created_at "
+            "FROM chat_messages ORDER BY id DESC LIMIT ?",
+            (limit,),
+        ).fetchall()
+    return [dict(row) for row in reversed(rows)]
