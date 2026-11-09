@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>Your AI</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">N</span><span>Your AI<small>Personal AI workspace</small></span></div>
+    <nav>
+      <a class="active" href="#overview">Overview</a>
+      <a href="#chat">AI Chat</a>
+      <a href="#projects">Projects</a>
+      <a href="#minecraft">Minecraft Studio</a>
+      <a href="#coding">Coding & Apps</a>
+      <a href="#creative">Creative Studio</a>
+      <a href="#security">Security & Permissions</a>
+    </nav>
+    <div class="sidebar-note">Local-first • Permission-based</div>
+  </aside>
+  <main>
+    <header><div><p class="eyebrow">WORKSPACE</p><h1>Welcome to Your AI</h1><p class="muted">Your projects, ideas and AI tools — in one place.</p></div><span id="status" class="status">Checking backend…</span></header>
+    <section id="overview" class="hero panel">
+      <div><p class="eyebrow">YOUR CREATIVE COMMAND CENTER</p><h2>Build something amazing.</h2><p class="muted">Start with chat or create a project. More studios will be added in tested milestones.</p><a class="primary" href="#chat">Open AI Chat</a></div>
+      <div class="orb">N</div>
+    </section>
+    <section id="chat" class="panel">
+      <div class="section-head"><div><p class="eyebrow">ASSISTANT</p><h2>AI Chat</h2></div><span class="muted">Cloud or local model</span></div>
+      <div id="messages" class="messages"><div class="bubble assistant">Hi! I’m Your AI. Ask me something to get started.</div></div>
+      <form id="chat-form" class="composer"><input id="chat-input" maxlength="8000" placeholder="Message Your AI…" autocomplete="off" required><button>Send</button></form>
+      <p class="hint">If no cloud key is configured, the backend tries your local Ollama model.</p>
+    </section>
+    <section id="projects" class="panel">
+      <div class="section-head"><div><p class="eyebrow">WORKSPACE</p><h2>Projects</h2></div></div>
+      <form id="project-form" class="project-form"><input id="project-name" maxlength="100" placeholder="Project name" required><select id="project-category"><option>General</option><option>Minecraft</option><option>Coding</option><option>Video</option><option>3D</option></select><button>Create project</button></form>
+      <div id="project-list" class="project-list"><p class="muted">Loading projects…</p></div>
+    </section>
+    <section class="grid">
+      <article id="minecraft" class="tile"><span>⛏️</span><h3>Minecraft Creator Studio</h3><p>Planned: plugins, mods, resource packs, schematics and validation.</p><small>Roadmap</small></article>
+      <article id="coding" class="tile"><span>💻</span><h3>Coding & App Builder</h3><p>Planned: code workspace, builds, tests and approval-based integrations.</p><small>Roadmap</small></article>
+      <article id="creative" class="tile"><span>🎬</span><h3>Creative Studio</h3><p>Planned: image, video, audio, animation and 3D workflows.</p><small>Roadmap</small></article>
+      <article id="security" class="tile"><span>🛡️</span><h3>Security & Permissions</h3><p>No shell or system actions are enabled in this starter. Future actions require approval.</p><small>Permission-first</small></article>
+    </section>
+    <footer>YOUR AI <span>Starter foundation v0.1.0</span></footer>
+  </main>
+  <script src="/assets/app.js"></script>
+</body>
+</html>
